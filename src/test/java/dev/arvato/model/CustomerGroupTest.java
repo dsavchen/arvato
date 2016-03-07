@@ -1,21 +1,19 @@
 package dev.arvato.model;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import junit.framework.TestCase;
+import static dev.arvato.model.CustomerGroup.DATE_FORMAT;
 import static dev.arvato.model.CustomerGroup.PREMIUM_DAY_COST;
 import static dev.arvato.model.CustomerGroup.PREMIUM_EVENING_COST;
 import static dev.arvato.model.CustomerGroup.REGULAR_DAY_COST;
 import static dev.arvato.model.CustomerGroup.REGULAR_EVENING_COST;
 
+import java.text.ParseException;
+import java.util.Date;
+
+import junit.framework.TestCase;
+
 /** to unit-test algo methods in CustomerGroup */
 public class CustomerGroupTest extends TestCase {
 
-	// const
-	static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-	
 	public void testDayTime() throws ParseException {
 		assertFalse(CustomerGroup.isDayTime(DATE_FORMAT.parse("2016-01-10 19:22").getTime()));
 		assertFalse(CustomerGroup.isDayTime(DATE_FORMAT.parse("2016-01-10 19:00").getTime()));

@@ -1,6 +1,6 @@
 'use strict';
  
-App.factory('CustomerService', ['$http', '$q', function($http, $q){
+App.factory('ApplicationService', ['$http', '$q', function($http, $q){
  
     return {
          
@@ -24,6 +24,18 @@ App.factory('CustomerService', ['$http', '$q', function($http, $q){
                                 }, 
                                 function(errResponse){
                                     console.error('Error while fetching groups');
+                                    return $q.reject(errResponse);
+                                }
+                        );
+            },
+            fetchInvoice: function(customer) {
+                return $http.get('http://localhost:8080/ArvatoApp/invoice/' + customer.id)
+                        .then(
+                                function(response){
+                                    return response.data;
+                                }, 
+                                function(errResponse){
+                                    console.error('Error while fetching parking information');
                                     return $q.reject(errResponse);
                                 }
                         );

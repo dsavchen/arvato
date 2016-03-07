@@ -12,7 +12,7 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "dev.arvato")
-public class HelloWorldConfiguration extends WebMvcConfigurerAdapter{
+public class AppConfiguration extends WebMvcConfigurerAdapter{
      
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {

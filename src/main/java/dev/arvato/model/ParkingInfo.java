@@ -1,17 +1,20 @@
 package dev.arvato.model;
 
+import java.text.ParseException;
+import java.util.Date;
+
 public class ParkingInfo {
 	
 	private long id;
 	private Customer customer;
-	private String timeStarted;
-	private String timeEnded;
+	private Date timeStarted;
+	private Date timeEnded;
 	
 	public ParkingInfo(){
         id=0;
     }
      
-    public ParkingInfo(long id, Customer customer, String timeStarted, String timeEnded){
+    public ParkingInfo(long id, Customer customer, Date timeStarted, Date timeEnded){
         this.id = id;
         this.customer = customer;
         this.timeStarted = timeStarted;
@@ -35,19 +38,27 @@ public class ParkingInfo {
     }
     
     public String getTimeStarted() {
+    	return CustomerGroup.DATE_FORMAT.format(timeStarted);
+    }
+ 
+    public Date getTimeStartedDate() {
     	return timeStarted;
     }
     
-    public void setTimeStarted(String timeStarted) {
-    	this.timeStarted = timeStarted;
+    public void setTimeStarted(String timeStarted) throws ParseException {
+    	this.timeStarted = CustomerGroup.DATE_FORMAT.parse(timeStarted);
     }
     
     public String getTimeEnded() {
+    	return CustomerGroup.DATE_FORMAT.format(timeEnded);
+    }
+    
+    public Date getTimeEndedDate() {
     	return timeEnded;
     }
     
-    public void setTimeEnded(String timeEnded) {
-    	this.timeEnded = timeEnded;
+    public void setTimeEnded(String timeEnded) throws ParseException {
+    	this.timeEnded = CustomerGroup.DATE_FORMAT.parse(timeEnded);
     }
 
 }

@@ -1,14 +1,13 @@
 'use strict';
  
-App.controller('CustomerController', ['$scope', 'CustomerService', function($scope, CustomerService) {
+App.controller('CustomerController', ['$scope', 'ApplicationService', function($scope, ApplicationService) {
           var self = this;
           self.customer={id:null,name:'',group:null};
-          self.parking={id:null,customer: null, timeStarted:null, timeEnded: null};
           self.customers=[];
           self.groups=[];
                
           self.fetchAllCustomers = function(){
-              CustomerService.fetchAllCustomers()
+        	  ApplicationService.fetchAllCustomers()
                   .then(
                                function(d) {
                                     self.customers = d;
@@ -19,7 +18,7 @@ App.controller('CustomerController', ['$scope', 'CustomerService', function($sco
                        );
           };
           self.fetchAllGroups = function(){
-              CustomerService.fetchAllGroups()
+        	  ApplicationService.fetchAllGroups()
                   .then(
                                function(d) {
                                     self.groups = d;
@@ -31,7 +30,7 @@ App.controller('CustomerController', ['$scope', 'CustomerService', function($sco
           };
             
           self.createCustomer = function(customer){
-              CustomerService.createCustomer(customer)
+        	  ApplicationService.createCustomer(customer)
                       .then(
                       self.fetchAllCustomers, 
                               function(errResponse){
@@ -39,18 +38,9 @@ App.controller('CustomerController', ['$scope', 'CustomerService', function($sco
                               } 
                   );
           };
-          self.createParking = function(parking){
-              CustomerService.createParking(parking)
-                      .then(
-                      self.fetchAllCustomers, 
-                              function(errResponse){
-                                   console.error('Error while adding parking info.');
-                              } 
-                  );
-          };
  
          self.updateCustomer = function(customer, id){
-        	 CustomerService.updateCustomer(customer, id)
+        	 ApplicationService.updateCustomer(customer, id)
                       .then(
                               self.fetchAllCustomers, 
                               function(errResponse){
@@ -60,7 +50,7 @@ App.controller('CustomerController', ['$scope', 'CustomerService', function($sco
           };
  
          self.deleteCustomer = function(id){
-        	 CustomerService.deleteCustomer(id)
+        	 ApplicationService.deleteCustomer(id)
                       .then(
                               self.fetchAllCustomers, 
                               function(errResponse){
@@ -81,11 +71,6 @@ App.controller('CustomerController', ['$scope', 'CustomerService', function($sco
                   console.log('Customer updated with id ', self.customer.id);
               }
               self.reset();
-          };
-
-          self.submitParking = function() {
-              self.createParking(self.parking);
-              console.log('Parking created with id ', self.parking.id);
           };
 
           self.edit = function(id){

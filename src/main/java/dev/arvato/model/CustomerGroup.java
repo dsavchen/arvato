@@ -1,5 +1,6 @@
 package dev.arvato.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -8,6 +9,7 @@ import java.util.List;
 public class CustomerGroup {
 
 	private static final long MSECONDS_IN_HALF_HOUR = 1800000;
+	public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	
 	// NOTE: logic below using these values works well only if start hour and end hour both are > 1 && < 23, in other case have to adjust methods getDayEndTimeInMillis and getDayStartTimeInMillis
 	private static final int DAY_START_HOUR = 7;

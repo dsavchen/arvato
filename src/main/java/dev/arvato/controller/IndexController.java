@@ -10,7 +10,12 @@ public class IndexController {
  
       @RequestMapping(method = RequestMethod.GET)
         public String getIndexPage() {
-            return "CustomerManagement";
+            return "ParkingManagement";
         }
+      
+      @RequestMapping(method = RequestMethod.GET, path="/customers")
+      public String getCustomersPage() {
+          return "CustomerManagement";
+      }
  
 }

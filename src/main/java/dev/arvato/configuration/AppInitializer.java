@@ -4,11 +4,11 @@ import javax.servlet.Filter;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
  
-public class HelloWorldInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
   
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[] { HelloWorldConfiguration.class };
+        return new Class[] { AppConfiguration.class };
     }
    
     @Override
@@ -23,7 +23,7 @@ public class HelloWorldInitializer extends AbstractAnnotationConfigDispatcherSer
      
     @Override
     protected Filter[] getServletFilters() {
-        Filter [] singleton = { new CORSFilter() };
+        Filter [] singleton = { new ApplicationFilter() };
         return singleton;
     }
   
